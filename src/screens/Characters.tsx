@@ -36,20 +36,18 @@ export default function Characters() {
   return (
     <>
       {filtered2?.map((serverCharList, i) => (
-        <>
+        <List key={uuid()}>
           <h1>{server_list[i]}</h1>
-          <List key={uuid()}>
-            {serverCharList.map((char) => (
-              <Item key={uuid()}>
-                <span>{char.CharacterClassName}</span>
-                <span>{char.CharacterLevel}</span>
-                <span>{char.CharacterName}</span>
-                <span>{char.ItemAvgLevel}</span>
-                <span>{char.ItemMaxLevel}</span>
-              </Item>
-            ))}
-          </List>
-        </>
+          {serverCharList.map((char) => (
+            <Item key={uuid()}>
+              <span>{char.CharacterClassName}</span>
+              <span>{char.CharacterLevel}</span>
+              <span>{char.CharacterName}</span>
+              <span>{char.ItemAvgLevel}</span>
+              <span>{char.ItemMaxLevel}</span>
+            </Item>
+          ))}
+        </List>
       ))}
     </>
   );

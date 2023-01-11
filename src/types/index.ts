@@ -15,3 +15,8 @@ export interface ICharacter {
   ItemMaxLevel: string;
   ServerName: string;
 }
+
+export interface ICalendar {
+  day: number;
+  active: boolean;
+}

@@ -11,6 +11,14 @@ import { ICharacter } from "../types";
 interface IForm {
   charName: string;
 }
+const HomeCt = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Header = styled.header`
   padding: 10px;
@@ -21,6 +29,7 @@ const Header = styled.header`
   }
 `;
 const SearchBar = styled.div`
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +39,7 @@ const SearchBar = styled.div`
     input {
       width: 100%;
       padding: 10px;
-      border: 1px solid #eee;
+      border: 2px solid rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       &::placeholder {
         color: #d0d0d0;
@@ -50,16 +59,18 @@ export default function Home() {
   };
   return (
     <>
-      <Header>로스트아크</Header>
-      <SearchBar>
-        <form onSubmit={handleSubmit(onFormSubmit)}>
-          <input
-            {...register("charName")}
-            placeholder="캐릭터 이름을 작성해주세요"
-          />
-        </form>
-      </SearchBar>
-      <Outlet />
+      <HomeCt>
+        <Header>로스트아크</Header>
+        <SearchBar>
+          <form onSubmit={handleSubmit(onFormSubmit)}>
+            <input
+              {...register("charName")}
+              placeholder="캐릭터 이름을 작성해주세요"
+            />
+          </form>
+        </SearchBar>
+        <Outlet />
+      </HomeCt>
     </>
   );
 }
