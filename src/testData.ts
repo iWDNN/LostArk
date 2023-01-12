@@ -37,6 +37,33 @@ export const testEventsData: INewsEvents[] = [
       "https://cdn-lostark.game.onstove.com/uploadfiles/banner/512a5b366254482ebc714f3d8366fd1e.jpg",
     Title: "프레이야 희망의 트리",
   },
+  {
+    EndDate: "2023-03-15T06:00:00",
+    Link: "https://lostark.game.onstove.com/Promotion/donation/221221",
+    RewardDate: null,
+    StartDate: "2022-12-21T06:00:00",
+    Thumbnail:
+      "https://cdn-lostark.game.onstove.com/uploadfiles/banner/512a5b366254482ebc714f3d8366fd1e.jpg",
+    Title: "프레이야 희망의 트리",
+  },
+  {
+    EndDate: "2023-03-15T06:00:00",
+    Link: "https://lostark.game.onstove.com/Promotion/donation/221221",
+    RewardDate: null,
+    StartDate: "2022-12-21T06:00:00",
+    Thumbnail:
+      "https://cdn-lostark.game.onstove.com/uploadfiles/banner/512a5b366254482ebc714f3d8366fd1e.jpg",
+    Title: "프레이야 희망의 트리",
+  },
+  {
+    EndDate: "2023-03-15T06:00:00",
+    Link: "https://lostark.game.onstove.com/Promotion/donation/221221",
+    RewardDate: null,
+    StartDate: "2022-12-21T06:00:00",
+    Thumbnail:
+      "https://cdn-lostark.game.onstove.com/uploadfiles/banner/512a5b366254482ebc714f3d8366fd1e.jpg",
+    Title: "프레이야 희망의 트리",
+  },
 ];
 
 export const testCharsData: ICharacter[][] = [

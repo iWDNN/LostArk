@@ -7,10 +7,19 @@ import Loading from "../components/Loading";
 import { testEventsData } from "../testData";
 import { INewsEvents } from "../types";
 import Calendar from "../components/Calendar";
-const List = styled.ul`
-  min-width: 700px;
+const EventsCt = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+const List = styled.ul`
+  width: 560px;
+  height: 57vh;
+  padding: 5px;
+  overflow: scroll;
+  /* display: grid;
+  grid-template-columns: repeat(2, 1fr); */
 `;
 const Item = styled.li`
   width: 100%;
@@ -61,44 +70,46 @@ export default function Events() {
   // );
   return (
     <>
-      <Calendar />
-      {/* {isLoading ? (
+      <EventsCt>
+        {/* {isLoading ? (
         <Loading />
-      ) : (
-      <List>
-        {testEventsData?.map((post) => (
-          <a
-            key={uuid()}
-            href={post.Link}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Item>
-              <Thumbnail src={post.Thumbnail} />
+      ) : ( */}
+        <List>
+          {testEventsData?.map((post) => (
+            <a
+              key={uuid()}
+              href={post.Link}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Item>
+                <Thumbnail src={post.Thumbnail} />
 
-              <Info>
-                <h1>{post.Title}</h1>
-                <p>
-                  <span>이벤트 기간:</span>
-                  <span>
-                    {new Date(post.StartDate).toLocaleDateString()} ~{" "}
-                  </span>
-                  <span>{new Date(post.EndDate).toLocaleDateString()}</span>
-                </p>
-                <p>
-                  <span>보상 날짜:</span>
-                  <span>
-                    {post.RewardDate
-                      ? new Date(post.RewardDate).toLocaleDateString()
-                      : "."}
-                  </span>
-                </p>
-              </Info>
-            </Item>
-          </a>
-        ))}
-      </List>
-       )} */}
+                <Info>
+                  <h1>{post.Title}</h1>
+                  <p>
+                    <span>이벤트 기간:</span>
+                    <span>
+                      {new Date(post.StartDate).toLocaleDateString()} ~{" "}
+                    </span>
+                    <span>{new Date(post.EndDate).toLocaleDateString()}</span>
+                  </p>
+                  <p>
+                    <span>보상 날짜:</span>
+                    <span>
+                      {post.RewardDate
+                        ? new Date(post.RewardDate).toLocaleDateString()
+                        : "."}
+                    </span>
+                  </p>
+                </Info>
+              </Item>
+            </a>
+          ))}
+        </List>
+        <Calendar />
+        {/* )} */}
+      </EventsCt>
     </>
   );
 }

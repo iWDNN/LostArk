@@ -23,6 +23,7 @@ export const makeCalendar = () => {
   }
   for (let i = 0; i < lastDay.getDate(); i++) {
     calArr2.push({
+      date: new Date(new Date(firstDay).setDate(firstDay.getDate() + i)),
       day: i + 1,
       active: false,
     });
