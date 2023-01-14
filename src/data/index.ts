@@ -9,7 +9,7 @@ export const server_list: string[] = [
   "니나브",
 ];
 
-export const makeCalendar = (month: number = 0) => {
+export const makeCurCal = (month: number = 0) => {
   const date = new Date();
   const firstDay = new Date(date.getFullYear(), date.getMonth() + month, 1);
   const lastDay = new Date(date.getFullYear(), date.getMonth() + month + 1, 0);

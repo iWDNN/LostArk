@@ -102,7 +102,7 @@ export default function Events() {
   //   "news-event",
   //   fetchEvents
   // );
-  const setHoverData = useSetRecoilState(hoverEventData);
+  const setOnHoverData = useSetRecoilState(hoverEventData);
   return (
     <>
       <h1 onClick={increaseIndex}>testBtn</h1>
@@ -129,7 +129,8 @@ export default function Events() {
                       href={post.Link}
                       rel="noopener noreferrer"
                       target="_blank"
-                      onMouseOver={() => setHoverData(post)}
+                      onMouseOver={() => setOnHoverData(post)}
+                      onMouseOut={() => setOnHoverData(null)}
                     >
                       <Box>
                         <Thumbnail src={post.Thumbnail} />

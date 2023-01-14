@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 import { arrayBuffer } from "stream/consumers";
 import styled from "styled-components";
 import { hoverEventData } from "../atoms";
-import { makeCalendar } from "../data";
+import { makeCurCal } from "../data";
 import { ICalendar } from "../types";
 
 const CalCt = styled.div`
@@ -39,18 +39,27 @@ const Day = styled.span<{ isSat: boolean; isSun: boolean }>`
 
 export default function Calendar() {
   const [cal, setCal] = useState<ICalendar[][]>([
-    makeCalendar(-1),
-    makeCalendar(),
-    makeCalendar(1),
+    makeCurCal(-1),
+    makeCurCal(),
+    makeCurCal(1),
   ]);
   const hoverData = useRecoilValue(hoverEventData);
   useEffect(() => {
-    setCal([makeCalendar(-1), makeCalendar(), makeCalendar(1)]);
+    setCal([makeCurCal(-1), makeCurCal(), makeCurCal(1)]);
     setCal((prev) => {
       const now0 = new Date();
       const now1 = new Date();
       const now2 = new Date();
-      const newCal: ICalendar[] = [...prev[0], ...prev[1], ...prev[2]];
+      const now3 = new Date();
+      const now4 = new Date();
+
+      const newCal: ICalendar[] = [
+        ...makeCurCal(-2),
+        ...makeCurCal(-1),
+        ...makeCurCal(),
+        ...makeCurCal(1),
+        ...makeCurCal(2),
+      ];
       let targetIndex = 0;
       if (hoverData) {
         const eventPeriod = Math.abs(
@@ -59,10 +68,10 @@ export default function Calendar() {
             (1000 * 60 * 60 * 24)
         );
         if (
-          new Date(now0.setMonth(now0.getMonth() - 1)).getMonth() ===
+          new Date(now0.setMonth(now0.getMonth() - 2)).getMonth() ===
           new Date(hoverData.StartDate).getMonth()
         ) {
-          console.log("if1");
+          // console.log("if0");
           targetIndex = newCal.findIndex(
             (cal) =>
               cal.date?.getDate() === new Date(hoverData.StartDate).getDate() &&
@@ -70,9 +79,10 @@ export default function Calendar() {
           );
         }
         if (
-          new Date(now1).getMonth() === new Date(hoverData.StartDate).getMonth()
+          new Date(now1.setMonth(now1.getMonth() - 1)).getMonth() ===
+          new Date(hoverData.StartDate).getMonth()
         ) {
-          console.log("if2");
+          // console.log("if1");
           targetIndex = newCal.findIndex(
             (cal) =>
               cal.date?.getDate() === new Date(hoverData.StartDate).getDate() &&
@@ -80,24 +90,44 @@ export default function Calendar() {
           );
         }
         if (
-          new Date(now2.setMonth(now2.getMonth() + 1)).getMonth() ===
-          new Date(hoverData.StartDate).getMonth()
+          new Date(now2).getMonth() === new Date(hoverData.StartDate).getMonth()
         ) {
-          console.log("if3");
+          // console.log("if2");
           targetIndex = newCal.findIndex(
             (cal) =>
               cal.date?.getDate() === new Date(hoverData.StartDate).getDate() &&
               cal.date?.getMonth() === new Date(hoverData.StartDate).getMonth()
           );
         }
-        console.log("target", targetIndex);
-        console.log("eventPeriod", eventPeriod);
+        if (
+          new Date(now3.setMonth(now3.getMonth() + 1)).getMonth() ===
+          new Date(hoverData.StartDate).getMonth()
+        ) {
+          // console.log("if3");
+          targetIndex = newCal.findIndex(
+            (cal) =>
+              cal.date?.getDate() === new Date(hoverData.StartDate).getDate() &&
+              cal.date?.getMonth() === new Date(hoverData.StartDate).getMonth()
+          );
+        }
+        if (
+          new Date(now4.setMonth(now4.getMonth() + 2)).getMonth() ===
+          new Date(hoverData.StartDate).getMonth()
+        ) {
+          // console.log("if4");
+          targetIndex = newCal.findIndex(
+            (cal) =>
+              cal.date?.getDate() === new Date(hoverData.StartDate).getDate() &&
+              cal.date?.getMonth() === new Date(hoverData.StartDate).getMonth()
+          );
+        }
+        // console.log("target", targetIndex);
+        // console.log("eventPeriod", eventPeriod);
         const resultArr = [];
         let count = 0;
         const result = newCal.map((cal, i) => {
           if (i >= targetIndex && count <= eventPeriod && cal.date) {
             count++;
-            console.log(count);
             return {
               day: cal.day,
               date: cal.date,
@@ -113,15 +143,16 @@ export default function Calendar() {
         for (let i = 0; i < result.length; i += 35) {
           resultArr.push(result.slice(i, i + 35));
         }
-        return resultArr;
+        return resultArr.slice(1, 4);
       }
+      // console.log(prev);
       return prev;
     });
   }, [hoverData]);
   return (
     <CalCt>
       <h1>Calendar</h1>
-      {cal.map((item, i) => (
+      {cal.map((item) => (
         <React.Fragment key={uuid()}>
           <List>
             {item.map((cal) => (
