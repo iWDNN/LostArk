@@ -98,74 +98,71 @@ export default function Events() {
     setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
   };
   const toggleLeaving = () => setLeaving((prev) => !prev);
-  const { isLoading, data: fetchEventsData } = useQuery<INewsEvents[]>(
-    "news-event",
-    fetchEvents
-  );
+  // const { isLoading, data: fetchEventsData } = useQuery<INewsEvents[]>(
+  //   "news-event",
+  //   fetchEvents
+  // );
   const setHoverData = useSetRecoilState(hoverEventData);
   return (
     <>
       <h1 onClick={increaseIndex}>testBtn</h1>
       <EventsCt>
-        {isLoading ? (
+        {/* {isLoading ? (
           <Loading />
-        ) : (
-          <>
-            <Slider>
-              <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
-                <Col
-                  variants={colVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  transition={{ type: "tween", duration: 1 }}
-                  key={index}
-                >
-                  {fetchEventsData
-                    ?.slice(offset * index, offset * index + offset)
-                    .map((post) => (
-                      <a
-                        key={uuid()}
-                        href={post.Link}
-                        rel="noopener noreferrer"
-                        target="_blank"
-                        onMouseOver={() => setHoverData(post)}
-                      >
-                        <Box>
-                          <Thumbnail src={post.Thumbnail} />
+        ) : ( */}
+        <>
+          <Slider>
+            <AnimatePresence initial={false} onExitComplete={toggleLeaving}>
+              <Col
+                variants={colVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                transition={{ type: "tween", duration: 1 }}
+                key={index}
+              >
+                {testEventsData
+                  ?.slice(offset * index, offset * index + offset)
+                  .map((post) => (
+                    <a
+                      key={uuid()}
+                      href={post.Link}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                      onMouseOver={() => setHoverData(post)}
+                    >
+                      <Box>
+                        <Thumbnail src={post.Thumbnail} />
 
-                          <Info>
-                            <h1>{post.Title}</h1>
-                            <p>
-                              <span>이벤트 기간:</span>
-                              <span>
-                                {new Date(post.StartDate).toLocaleDateString()}{" "}
-                                ~{" "}
-                              </span>
-                              <span>
-                                {new Date(post.EndDate).toLocaleDateString()}
-                              </span>
-                            </p>
-                            <p>
-                              <span>보상 날짜:</span>
-                              <span>
-                                {post.RewardDate
-                                  ? new Date(
-                                      post.RewardDate
-                                    ).toLocaleDateString()
-                                  : "."}
-                              </span>
-                            </p>
-                          </Info>
-                        </Box>
-                      </a>
-                    ))}
-                </Col>
-              </AnimatePresence>
-            </Slider>
-            <Calendar />
-          </>
-        )}
+                        <Info>
+                          <h1>{post.Title}</h1>
+                          <p>
+                            <span>이벤트 기간:</span>
+                            <span>
+                              {new Date(post.StartDate).toLocaleDateString()} ~{" "}
+                            </span>
+                            <span>
+                              {new Date(post.EndDate).toLocaleDateString()}
+                            </span>
+                          </p>
+                          <p>
+                            <span>보상 날짜:</span>
+                            <span>
+                              {post.RewardDate
+                                ? new Date(post.RewardDate).toLocaleDateString()
+                                : "."}
+                            </span>
+                          </p>
+                        </Info>
+                      </Box>
+                    </a>
+                  ))}
+              </Col>
+            </AnimatePresence>
+          </Slider>
+          <Calendar />
+        </>
+        {/* )} */}
       </EventsCt>
     </>
   );

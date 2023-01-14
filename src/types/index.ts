@@ -17,7 +17,7 @@ export interface ICharacter {
 }
 
 export interface ICalendar {
-  date?: Date;
+  date?: Date | null;
   day: number;
   active: boolean;
 }

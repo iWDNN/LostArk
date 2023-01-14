@@ -5,10 +5,10 @@ export const testEventsData: INewsEvents[] = [
     EndDate: "2023-01-18T06:00:00",
     Link: "https://lostark.game.onstove.com/Promotion/Reservation/230104",
     RewardDate: "2023-02-15T06:00:00",
-    StartDate: "2023-01-04T06:00:00",
+    StartDate: "2022-11-28T06:00:00",
     Thumbnail:
       "https://cdn-lostark.game.onstove.com/uploadfiles/banner/1756e03eb85243d6bd4189f932d0b63b.jpg",
-    Title: "슬레이어 사전 등록 이벤트",
+    Title: "Test1",
   },
   {
     EndDate: "2023-01-18T06:00:00",
@@ -17,7 +17,7 @@ export const testEventsData: INewsEvents[] = [
     StartDate: "2023-01-04T06:00:00",
     Thumbnail:
       "https://cdn-lostark.game.onstove.com/uploadfiles/banner/1756e03eb85243d6bd4189f932d0b63b.jpg",
-    Title: "슬레이어 사전 등록 이벤트",
+    Title: "Test2",
   },
   {
     EndDate: "2023-03-15T06:00:00",
@@ -26,7 +26,16 @@ export const testEventsData: INewsEvents[] = [
     StartDate: "2022-12-21T06:00:00",
     Thumbnail:
       "https://cdn-lostark.game.onstove.com/uploadfiles/banner/383280fdceea4a6fbb6cee56741dee95.jpg",
-    Title: "프레이야 포인트 SHOP",
+    Title: "Test3",
+  },
+  {
+    EndDate: "2023-02-05T06:00:00",
+    Link: "https://lostark.game.onstove.com/Promotion/pointshop/221221",
+    RewardDate: "2023-02-05T06:00:00",
+    StartDate: "2023-01-14T06:00:00",
+    Thumbnail:
+      "https://cdn-lostark.game.onstove.com/uploadfiles/banner/383280fdceea4a6fbb6cee56741dee95.jpg",
+    Title: "Test4",
   },
   {
     EndDate: "2023-03-15T06:00:00",
