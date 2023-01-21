@@ -115,7 +115,6 @@ section {
 }
 body {
   line-height: 1;
-  background-color: #eee;
   min-height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;
