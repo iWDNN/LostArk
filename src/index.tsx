@@ -114,10 +114,10 @@ section {
   display: block;
 }
 body {
+  font-size:15px;
   line-height: 1;
-  min-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  /* overflow-x: hidden;
+  overflow-y: hidden; */
 }
 ol,
 ul {

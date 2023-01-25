@@ -1,22 +1,23 @@
-import React, { useEffect } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
+import Header from "./components/Header";
 
 const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  background-color: #eee;
+  /* width: 100vw;
+  height: 100%; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 45px;
 `;
 
 export default function Root() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    navigate("events");
-  }, []);
   return (
-    <Container>
-      <Outlet />
-    </Container>
+    <>
+      <Header />
+      <Container>
+        <Outlet />
+      </Container>
+    </>
   );
 }
